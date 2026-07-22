@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paramparaa Naturals | Organic Groceries;</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f0fdf4; }
+    .cardShadow { box-shadow: 0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -4px rgba(0,0,0,.08); }
+    .tap { -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+
+<body class="pb-24">
+  <!-- Loading -->
+  <div id="loading-overlay" class="fixed inset-0 bg-white/80 hidden items-center justify-center z-50">
+    <div class="text-center">
+      <svg class="animate-spin h-8 w-8 text-lime-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <p class="mt-3 text-sm text-gray-700">Processing your order...</p>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div class="bg-white rounded-2xl border border-lime-200 cardShadow p-5 sm:p-6">
+      <!-- Header -->
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h1 class="text-3xl font-extrabold text-lime-700">Paramparaa Naturals</h1>
+          <p class="text-gray-500 mt-1">Fresh organic produce online ordering website.</p>
+        </div>
+      </div>
+
+      <!-- Order window + delivery schedule (Weekly) -->
+<div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4">
+    <div class="text-sm font-semibold text-gray-900">📝 Order Window</div>
+    <div class="text-sm text-gray-700 mt-1">
+      22nd July (Wednesday) <b>11:00 AM</b> to<br>
+      23rd July (Thursday) <b>01:00 PM</b>
+    </div>
+  </div>
+
+  <div class="bg-green-50 border border-green-200 rounded-2xl p-4">
+    <div class="text-sm font-semibold text-gray-900">🚚 Delivery Schedule</div>
+    <div class="text-sm text-gray-700 mt-1">
+      25th July (Saturday), <b>07:00 AM – 02:00 PM</b>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Search 
+      <div class="mt-6">
+        <label class="block text-sm font-medium text-gray-700">Search items</label>
+        <div class="mt-1 flex gap-2">
+          <input id="searchInput" type="text" placeholder="Type: tomato, banana, coriander..."
+            class="w-full rounded-xl border border-gray-300 p-3 focus:border-lime-500 focus:ring-lime-500">
+          <button id="clearSearchBtn" type="button"
+            class="tap px-4 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 font-semibold">
+            Clear
+          </button>
+        </div>
+        <p class="text-xs text-gray-500 mt-2" id="searchHint">Tip: Search will filter across all categories.</p>
+      </div> 
+      -->
+      
+      <!-- Mobile Category Tabs -->
+      <div id="mobileCategoryTabs" class="sticky top-0 z-30 -mx-4 sm:-mx-6 lg:hidden bg-white/95 backdrop-blur border-b border-gray-200 px-4 sm:px-6 py-2 hidden">
+      <div id="mobileTabsInner" class="flex gap-2 overflow-x-auto whitespace-nowrap tap"></div>
+      </div>
+      
+      <!-- Form -->
+      <form id="orderForm" class="mt-6">
+        <h2 class="text-lg font-semibold text-lime-800 border-b pb-2 mb-4">1) Your Contact Details</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="customerName" class="block text-sm font-medium text-gray-700">Customer Name *</label>
+            <input id="customerName" required
+              class="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-lime-500 focus:ring-lime-500"/>
+          </div>
+          <div>
+            <label for="contactNumber" class="block text-sm font-medium text-gray-700">Contact Number (10 digits) *</label>
+            <input id="contactNumber" required pattern="[0-9]{10}" title="Enter exactly 10 digits"
+              class="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-lime-500 focus:ring-lime-500"/>
+              
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
+            <input id="email" required type="email" placeholder="yourname@example.com"
+              class="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-lime-500 focus:ring-lime-500"/>
+          </div>
+          <div class="md:col-span-2">
+            <label for="notes" class="block text-sm font-medium text-gray-700">Delivery Address and Google Maps Location</label>
+            <textarea id="notes" rows="2"
+              class="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-lime-500 focus:ring-lime-500"
+              placeholder="Area, landmark, flat number, instructions..."></textarea>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-lime-800">2) Shop by Category</h2>
+              <p class="text-sm text-gray-600 mt-1">
+                Tap <b>Add</b>, then use <b>– / +</b>. For <b>kg</b> items, quantity changes in <b>1/4 kg</b> steps.
+              </p>
+            </div>
+          </div>
+
+          <!-- Products + Desktop cart -->
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+              <div id="products-container" class="space-y-10"></div>
+              <div id="noResults" class="hidden mt-6 p-4 rounded-2xl border border-gray-200 bg-gray-50">
+                <div class="font-semibold text-gray-900">No items found.</div>
+                <div class="text-sm text-gray-600 mt-1">Try a different keyword or clear search.</div>
+              </div>
+            </div>
+
+            <div class="hidden lg:block">
+                <!-- Desktop Category Tabs -->
+            <div id="desktopCategoryTabs" class="mb-4 bg-white border border-gray-200 rounded-2xl p-4 cardShadow hidden">
+            <h3 class="text-sm font-semibold text-gray-900">Browse Categories</h3>
+            <div id="desktopTabsInner" class="mt-3 flex flex-col gap-2"></div>
+             </div>
+
+              <div class="sticky top-6 bg-lime-50 border border-lime-200 rounded-2xl p-4 cardShadow">
+                <h3 class="text-lg font-semibold text-lime-800">🛒 Cart Preview</h3>
+                <p class="text-xs text-gray-500 mb-3">Updates as you add items.</p>
+
+                <div id="sideCartItems" class="space-y-2 text-sm text-gray-700">
+                  <p class="text-gray-500 text-sm">No items added yet.</p>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-lime-200 flex justify-between items-center">
+                  <span class="text-sm font-semibold text-gray-700">Estimated Total:</span>
+                  <span id="sideCartTotal" class="text-xl font-extrabold text-lime-700">₹ 0.00</span>
+                </div>
+
+                <button id="sidePlaceOrderBtn" type="button"
+                  class="tap mt-4 w-full bg-lime-600 hover:bg-lime-700 text-white rounded-2xl px-4 py-3 font-semibold">
+                  Review & Place Order
+                </button>
+
+                <button id="sideClearBtn" type="button"
+                  class="tap mt-2 w-full bg-white hover:bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3 font-semibold">
+                  Clear Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="hidden">Submit</button>
+      </form>
+
+      <!-- Weekly Note -->
+      <div class="mt-10 border-t pt-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 cardShadow">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-gray-900">🌿 This Week’s Organic Note</h2>
+              <p class="text-sm text-gray-600 mt-1" id="weeklyNoteSubtitle"></p>
+            </div>
+
+
+          </div>
+
+          <div class="mt-4">
+  <div class="bg-lime-50 border border-lime-200 rounded-2xl p-5">
+
+  <!-- Author -->
+  <div class="text-sm font-bold text-gray-900">
+    Nutrition notes by Alekhya
+  </div>
+
+  <div class="mt-1 text-xs text-gray-700">
+    Health Coach &amp; Nutrition Coach
+  </div>
+
+  <div class="mt-1 text-xs text-gray-700">
+    Consultation:
+    <a href="mailto:nutritionbyalekhya@gmail.com"
+       class="font-semibold text-lime-700 hover:underline break-all">
+      nutritionbyalekhya@gmail.com
+    </a>
+  </div>
+
+  <!-- Veggie name (NOT bold) -->
+  <div class="mt-4 text-sm text-gray-800" id="weeklyNoteTitle"></div>
+
+  <!-- Bullets -->
+  <ul class="mt-3 text-sm text-gray-700 list-disc pl-5 space-y-1"
+      id="weeklyNoteBullets"></ul>
+
+  <!-- Nutrition tip -->
+  <div class="mt-4 pt-4 border-t border-lime-200">
+    <div class="text-sm font-semibold text-gray-900">Nutrition tip</div>
+    <p class="text-sm text-gray-700 mt-1" id="weeklyNutritionTip"></p>
+  </div>
+
+</div>
+
+
+      
+        <!-- Mission -->
+<div class="mt-8">
+  <div class="bg-white border border-gray-200 rounded-2xl p-5 cardShadow">
+    <h2 class="text-lg font-semibold text-gray-900">Our Mission</h2>
+
+    <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-lime-50 border border-lime-200 rounded-2xl p-4">
+        <div class="font-semibold text-gray-900">Clean food, simple access</div>
+        <p class="text-sm text-gray-700 mt-1">
+          Make weekly organic ordering easy for families without complicated apps or confusion.
+        </p>
+      </div>
+
+      <div class="bg-lime-50 border border-lime-200 rounded-2xl p-4">
+        <div class="font-semibold text-gray-900">Support farmers & honest sourcing</div>
+        <p class="text-sm text-gray-700 mt-1">
+          Build a transparent route from trusted farms to customers with consistent quality.
+        </p>
+      </div>
+
+      <div class="bg-lime-50 border border-lime-200 rounded-2xl p-4">
+        <div class="font-semibold text-gray-900">Health-first community</div>
+        <p class="text-sm text-gray-700 mt-1">
+          Share simple, science-backed nutrition guidance each week so families make healthier food choices, not just purchases.
+
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!-- About -->
+      <div class="mt-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 cardShadow">
+          <h2 class="text-lg font-semibold text-gray-900">About Paramparaa Naturals</h2>
+          <p class="text-sm text-gray-700 mt-2" id="aboutText">
+            Paramparaa Naturals is a community-driven organic store focused on clean, fresh produce and trusted sourcing.
+            We aim to keep ordering simple, transparent, and consistent for weekly household needs.
+            <br><br>
+            <span class="text-gray-500"></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQs (disabled for now)
+      <div class="mt-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 cardShadow">
+          <h2 class="text-lg font-semibold text-gray-900">FAQs</h2>
+          <div class="mt-4 space-y-3" id="faqContainer"></div>
+        </div>
+      </div>
+      -->
+      
+      <!-- Share CTA -->
+<div class="mt-8 bg-lime-50 border border-lime-200 rounded-2xl p-5 text-center">
+  <h3 class="font-semibold text-gray-900">Know someone who prefers organic?</h3>
+  <p class="text-sm text-gray-700 mt-1">
+    Share this link with friends & family for weekly fresh organic produce.
+  </p>
+</div>
+
+
+      <!-- Contact -->
+      <div class="mt-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 cardShadow">
+          <h2 class="text-lg font-semibold text-gray-900">Contact</h2>
+          <div class="mt-2 text-sm text-gray-700 space-y-2">
+            <div><span class="font-semibold">Phone / WhatsApp:</span> <span id="contactWhatsapp">+91 6304622533, +91 9640335320 </span></div>
+            <div><span class="font-semibold">Email:</span> <span id="contactEmail">paramsustainables@gmail.com</span></div>
+            <div><div>
+  <span class="font-semibold">Store Address:</span>
+  <div class="mt-1 text-sm text-gray-700 leading-relaxed">
+
+    <div class="font-semibold text-gray-900">
+      Paramparaa Naturals (Echo-Mate)
+    </div>
+
+    <div class="mt-1 break-all">
+      <span class="font-semibold">Google Maps URL:</span><br>
+      <a href="https://maps.app.goo.gl/B87LW6qmEFZuiccx9?g_st=awb"
+         target="_blank" rel="noopener"
+         class="text-lime-700 hover:underline">
+        https://maps.app.goo.gl/K3xX2WAw9q9YnUNh9
+      </a>
+    </div>
+
+    <div class="mt-2">
+      Shop No. 5<br>
+      H.No: 1-5-1082<br>
+      Silver Petals Apartment<br>
+      Father Balaiah Nagar, Old Alwal<br>
+      Secunderabad – 500010
+    </div>
+
+    <div class="mt-2">
+      <span class="font-semibold">Landmark:</span><br>
+      Beside Ion Digital Zone – Exam Centre (Ratnadeep Super Market)<br>
+      Diagonally opposite <span class="font-semibold">BATA</span> showroom
+    </div>
+
+  </div>
+</div>
+</span></div>
+            <div class="text-xs text-gray-500 mt-3">
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile cart bar -->
+  <div class="fixed bottom-0 inset-x-0 z-40 lg:hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+      <button id="openCartBtn" type="button"
+        class="tap w-full bg-lime-600 hover:bg-lime-700 text-white rounded-2xl cardShadow px-4 py-4 flex items-center justify-between">
+        <div class="text-left">
+          <div class="text-sm font-semibold">🛒 View Cart</div>
+          <div class="text-xs text-lime-100" id="cartMiniLine">0 items</div>
+        </div>
+        <div class="text-right">
+          <div class="text-sm">Estimated Total</div>
+          <div class="text-xl font-extrabold" id="cartMiniTotal">₹ 0.00</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Cart modal (mobile/tablet) -->
+  <div id="cartModal" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="absolute inset-0 bg-black/50" id="cartBackdrop"></div>
+    <div class="absolute inset-x-0 bottom-0 p-0">
+      <div class="bg-white w-full rounded-t-3xl cardShadow border border-lime-200 overflow-hidden">
+        <div class="p-5 border-b flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-gray-900">Your Cart</h3>
+            <p class="text-xs text-gray-500">Review items before placing the order.</p>
+          </div>
+          <button id="closeCartBtn" class="tap rounded-xl px-3 py-2 text-sm font-semibold bg-gray-100 hover:bg-gray-200">
+            Close
+          </button>
+        </div>
+
+        <div class="p-5 max-h-[55vh] overflow-auto">
+          <div id="cartItems" class="space-y-3"></div>
+          <div class="mt-5 pt-4 border-t flex items-center justify-between">
+            <div class="text-sm font-semibold text-gray-700">Estimated Total</div>
+            <div class="text-2xl font-extrabold text-lime-700" id="cartTotal">₹ 0.00</div>
+          </div>
+          <p class="mt-2 text-xs text-gray-500">
+            Final amount may vary slightly based on exact weight during packing.
+          </p>
+        </div>
+
+        <div class="p-5 border-t bg-lime-50 flex gap-3">
+          <button id="placeOrderBtn"
+            class="tap w-2/3 bg-lime-600 hover:bg-lime-700 text-white rounded-2xl px-4 py-3 font-semibold">
+            Place Order
+          </button>
+          <button id="clearCartBtn"
+            class="tap w-1/3 bg-white hover:bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3 font-semibold">
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Order Modal -->
+<div id="reviewModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-xl">
+
+    <div class="p-6 border-b">
+      <h2 class="text-2xl font-bold text-lime-700">
+        Review Your Order
+      </h2>
+      <p class="text-gray-500 text-sm mt-1">
+        Please verify your order before placing it.
+      </p>
+    </div>
+
+    <div class="p-6">
+
+      <!-- Customer Details -->
+      <div class="mb-6">
+        <h3 class="font-semibold text-lg mb-3">
+          Customer Details
+        </h3>
+
+        <div id="reviewCustomerDetails"
+             class="bg-gray-50 rounded-xl p-4 text-sm">
+        </div>
+      </div>
+
+      <!-- Order Items -->
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-lg mb-3">
+          Selected Items
+        </h3>
+
+        <div id="reviewItems"
+             class="space-y-3">
+        </div>
+
+      </div>
+
+      <div class="border-t pt-4 flex justify-between text-xl font-bold">
+        <span>Estimated Total</span>
+        <span id="reviewTotal" class="text-lime-700">
+          ₹0.00
+        </span>
+      </div>
+
+    </div>
+
+    <div class="border-t p-6 flex gap-3">
+
+      <button
+        id="editOrderBtn"
+        class="flex-1 border rounded-xl py-3 font-semibold hover:bg-gray-100">
+
+        Continue Shopping
+
+      </button>
+
+      <button
+        id="confirmOrderBtn"
+        class="flex-1 bg-lime-600 hover:bg-lime-700 text-white rounded-xl py-3 font-semibold">
+
+        Place Order
+
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+  <!-- Message Box -->
+  <div id="messageBox" class="fixed inset-0 bg-gray-900/50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white p-6 rounded-2xl w-full max-w-md cardShadow border border-gray-200">
+      <h3 id="boxTitle" class="text-xl font-bold mb-3"></h3>
+      <p id="boxMessage" class="text-gray-700 mb-4"></p>
+      <button id="closeMessageBoxButton" class="w-full py-3 px-4 rounded-2xl bg-lime-600 text-white hover:bg-lime-700 font-semibold tap">
+        Close
+      </button>
+    </div>
+  </div>
+
+<script>
+  const WEB3FORMS_ACCESS_KEY = "094f7e13-4cc3-4812-b7d9-a1d4479e6e6f";
+  const PLACEHOLDER_IMG = "images/placeholder.jpg";
+
+  // Optional: if any item’s image filename doesn’t match slug rules, set here.
+  const IMAGE_OVERRIDES = {
+    // "Dragon Fruit (Pink)": "dragon-fruit.jpg",
+  };
+
+  function slugifyItemName(name) {
+    return String(name)
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+  }
+  function imagePathForItem(itemName, explicitImage) {
+    if (explicitImage) return `images/${explicitImage}`;
+    if (IMAGE_OVERRIDES[itemName]) return `images/${IMAGE_OVERRIDES[itemName]}`;
+    return `images/${slugifyItemName(itemName)}.jpg`;
+  }
+
+  // Weekly note (EDIT THIS EVERY WEEK)
+  const WEEKLY_NOTE = {
+    FruitName: "Mango",
+    //subtitle: "Short, helpful info that builds trust and makes customers return weekly.",
+    bullets: [
+      "The Principles of Organic Agriculture are Health, Ecology, Fairness and Care.",
+      "Strong Immunity Support: Mangoes are rich in Vitamin A and C, which helps your body fight infections and supports skin health.",
+      "Good for Digestion: They contain natural enzymes, like amylasces, that help breakdown carbs, plus fiber to support gut health. Note: Helpful but only if you are not overeating."
+    ],
+//storageTip: "Store in the fridge in a paper bag or breathable container. Use within 3–4 days for best freshness.",
+   nutritionTip: "Start your meal with protein component before touching carbs like rice or roti."
+  };
+
+  // FAQs (EDIT ANYTIME)
+  const FAQS = [
+    { q: "When is delivery?", a: "We deliver every Saturday between 8 AM – 11 AM." },
+    { q: "How does weight work for 1/4 kg, 1/2 kg, etc.?", a: "You can add items in 1/4 kg steps. Final weight may vary slightly during packing." },
+    { q: "What if an item is unavailable?", a: "If an item is out of stock, we will contact you and suggest alternatives." },
+    { q: "Is there a minimum order value?", a: "Currently no fixed minimum (you can decide later and update here)." },
+    { q: "How can I contact the store?", a: "Use the phone/WhatsApp details in the Contact section at the bottom." },
+    { q: "Do you accept online payments?", a: "Online payments are not enabled yet. We will add it soon." }
+  ];
+
+const CATEGORY_ORDER = [
+  'Desi Seed Vegetables',
+  'Leafy Vegetables',
+  'Veggies',
+  'Creeper Veggies',
+  'Roots & Tubers',
+  'Salad Veggies',
+  'Other Farm Produce',
+  'Fruits'
+];
+
+  // Full product list from your original code
+  const productList = [
+{ category: 'Veggies', item: 'Brinjal Black Round', price: 90, unit: 'kg',outOfStock: false },
+{ category: 'Veggies', item: 'Brinjal Purple(Black) Striped', price: 90, unit: 'kg',outOfStock: false },
+{ category: 'Veggies', item: 'Green Chillies', price: 35, unit: '250gms',outOfStock: false },
+{ category: 'Veggies', item: 'Dark Green Chillies', price: 35, unit: '250gms' ,outOfStock: false},
+{ category: 'Veggies', item: 'Chilli Baji (Bengaluru)', price: 100, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Tomato', price: 70, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Tomato Raw', price: 65, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Kashi Tomato', price: "Out of Stock", unit: '500gms' ,outOfStock: true},
+{ category: 'Veggies', item: 'Ladies Finger (Okra)', price: 110, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Brinjal Green Round', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Brinjal Green Long', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Brinjal Bottle Green', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Veggies', item: 'Brinjal Purple Round', price: 85, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Brinjal Purple Long', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Brinjal Bottle Purple', price: 110, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Cabbage', price: 75, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Red Cabbage', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Veggies', item: 'Cauliflower', price: 75, unit: 'pc' ,outOfStock: false},
+{ category: 'Veggies', item: 'Capsicum Green', price: 140, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Capsicum Red (Exotic)', price: 350, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Capsicum Yellow (Exotic)', price: 350, unit: 'kg' ,outOfStock: false},
+{ category: 'Veggies', item: 'Cluster Beans', price: 110, unit: 'kg' ,outOfStock: false},
+
+{ category: 'Creeper Veggies', item: 'Nethi Beerakaya', price: 130, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Ridge Gourd', price: 110, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Chikkudugaya (Broad Beans)', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Bottle Gourd Long', price: 30, unit: 'pc' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Dondakaya (Ivy Gourd)', price: 80, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Bitter Gourd (Green)', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Cow Pea', price: 100, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'French Beans', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Cucumber Yellow Round', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Cucumber Mangalore', price: 80, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Ash Gourd', price: 70, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Pumpkin', price: 70, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Sweet Pumpkin', price: 70, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Disco Pumpkin', price: 70, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Snake Gourd', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Natu Beans', price: 120, unit: 'Kg' ,outOfStock: false},
+
+{ category: 'Desi Seed Vegetables', item: 'Natu Kothimeera', price: 45, unit: '250gms' ,outOfStock: false},
+{ category: 'Desi Seed Vegetables', item: 'Natu Bendakay', price: 120, unit: 'Kg' ,outOfStock: false},
+{ category: 'Desi Seed Vegetables', item: 'Natu Keera Dosa', price: 90, unit: 'Kg' ,outOfStock: false},
+{ category: 'Desi Seed Vegetables', item: 'Natu Sorakai', price: 25, unit: 'pc' ,outOfStock: false},
+{ category: 'Desi Seed Vegetables', item: 'Natu Beerakai', price: 120, unit: 'Kg' ,outOfStock: false},
+{ category: 'Desi Seed Vegetables', item: 'Natu Ginger', price: "Out of Stock", unit: 'Kg' ,outOfStock: true},
+{ category: 'Desi Seed Vegetables', item: 'Natu Garlic', price: 290, unit: 'Kg' ,outOfStock: false},
+
+
+{ category: 'Roots & Tubers', item: 'Potato', price: 70, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Baby Potato', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Red Onion', price: 65, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'White Onion', price: "Out of Stock" , unit: 'kg' ,outOfStock: true},
+{ category: 'Roots & Tubers', item: 'Onion Sambar', price: 130, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Spring Onion', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Radish', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Red Radish', price: 110, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Chamagadda', price: 100, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Red Sweet Potato', price: 95, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'White Sweet Potato', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Roots & Tubers', item: 'Ginger', price: 250, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Garlic', price: 290, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Tapioca', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Roots & Tubers', item: 'Elephant Foot Yam', price: 85, unit: 'kg' ,outOfStock: false},
+
+{ category: 'Salad Veggies', item: 'Carrot Ooty', price: 140, unit: 'kg' ,outOfStock: false},
+{ category: 'Salad Veggies', item: 'Beetroot', price: 95, unit: 'kg' ,outOfStock: false},
+{ category: 'Salad Veggies', item: 'Carrot', price: 115, unit: 'kg' ,outOfStock: false},
+{ category: 'Salad Veggies', item: 'Delhi Carrot (Gajjar)', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Salad Veggies', item: 'Keera Dosa (Salad Cucumber)', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Salad Veggies', item: 'English Cucumber', price: 110, unit: 'kg' ,outOfStock: false},
+
+{ category: 'Other Farm Produce', item: 'Raw Banana', price: 26, unit: 'pc' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Drum Sticks', price: 10, unit: '3pcs' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Sweet Corn', price: 30, unit: 'pc' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Baby Corn (peeled)', price: 65, unit: 'pack' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Lemon', price: 25, unit: '3pcs' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Amla (Indian Gooseberry)', price: 160, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Raw Mango', price: 85, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Pachi Palli', price: 170, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Pachi Batani', price: 440, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Banana Stem', price: 25, unit: 'pc' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Banana Leaves', price: 35, unit: '5pcs' ,outOfStock: false},
+
+{ category: 'Leafy Vegetables', item: 'Coriander', price: 20, unit: 'Bunch (150gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Karvepaku', price: 10, unit: 'Bunch (100gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Spinach (Palakura)', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Thotakura', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Red Thotakura', price: 40, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Fenugreek(Menthi)', price: 50, unit: 'Bunch (250gms)',outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Mint(Pudina)', price: 20, unit: 'Bunch (150gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Gongura', price: 35, unit: 'Bunch (250gms)',outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Bachali Akku', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Chukka Akku', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Munuga Akku', price: 45, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Soya Kura', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'Gangavailkura', price: "Out of Stock", unit: 'Bunch (250gms)' ,outOfStock: true},
+{ category: 'Leafy Vegetables', item: 'PonnagantiAkku', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
+{ category: 'Leafy Vegetables', item: 'PulichintaAkku', price: "Out of Stock", unit: 'Bunch (250gms)' ,outOfStock: true},
+{ category: 'Leafy Vegetables', item: 'Chinta Chigguru Akku', price: "Out of Stock", unit: 'Bunch (250gms)' ,outOfStock: true},
+{ category: 'Leafy Vegetables', item: 'Chama Akku', price: "Out of Stock", unit: 'Bunch (250gms)' ,outOfStock: true},
+
+{ category: 'Exotics', item: 'Ice Berg Lettuce', price: 70, unit: 'pc' ,outOfStock: false},
+{ category: 'Exotics', item: 'Oyster Mushrooms', price: "Out of Stock", unit: '200g' ,outOfStock: true},
+{ category: 'Exotics', item: 'Broccoli', price: 190, unit: 'kg' ,outOfStock: false},
+{ category: 'Exotics', item: 'Cherry Tomato', price: 90, unit: '500gms' ,outOfStock: false},
+{ category: 'Exotics', item: 'Chow Chow', price: 130, unit: 'kg' ,outOfStock: false},
+{ category: 'Exotics', item: 'Pokchai Vegetable', price: 55, unit: 'pc' ,outOfStock: false},
+{ category: 'Exotics', item: 'Knol Knol', price: 140, unit: 'kg' ,outOfStock: false},
+
+{ category: 'Herbals', item: 'Doddapatre soppu (Vamu Leaves)', price: 30, unit: 'Bunch' ,outOfStock: false},
+{ category: 'Herbals', item: 'Lemon Grass Cuttings', price: 40, unit: 'Bunch' ,outOfStock: false},
+{ category: 'Herbals', item: 'Amrutha Balli (Thippateega)', price: 30, unit: 'Bunch' ,outOfStock: false},
+{ category: 'Herbals', item: 'Brahmi Leaves (Brahmi Aakulu)', price: 35, unit: 'Bunch' ,outOfStock: false},
+{ category: 'Herbals', item: 'Raw Turmeric', price: 250, unit: 'kg' ,outOfStock: false},
+{ category: 'Herbals', item: 'Moringa Leaves', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Herbals', item: 'Nalleru Kadalu', price: 200, unit: 'kg' ,outOfStock: false},
+
+{ category: 'Others', item: 'Mixed Sprouts', price: 75, unit: '200gms' ,outOfStock: false},
+{ category: 'Others', item: 'Cold Pressed Sunflower Oil', price: 480, unit: 'Litre' ,outOfStock: false},
+{ category: 'Others', item: 'Cold Pressed White Sesame Oil', price: 300, unit: '500ml' ,outOfStock: false},
+{ category: 'Others', item: 'Cold Pressed White Sesame Oil', price: 600, unit: 'Litre' ,outOfStock: false},
+{ category: 'Others', item: 'Cold Pressed Coconut Oil', price: 390, unit: '500ml' ,outOfStock: false},
+{ category: 'Others', item: 'Cold Pressed Coconut Oil', price: 780, unit: 'Litre' ,outOfStock: false},
+{ category: 'Others', item: 'Cold Pressed Groundnut Oil', price: 390, unit: 'Litre' ,outOfStock: false},
+{ category: 'Others', item: 'Organic Jaggery Cubes', price: 150, unit: 'Kg' ,outOfStock: false},
+{ category: 'Others', item: 'Desi Khandsari Sugar', price: 140, unit: 'Kg',outOfStock: false },
+{ category: 'Others', item: 'Natu Kodi Eggs 6', price: 108, unit: '6pcs' ,outOfStock: false},
+{ category: 'Others', item: 'Natu Kodi Eggs 12', price: 210, unit: '12pcs' ,outOfStock: false},
+{ category: 'Others', item: 'Natu Kodi Eggs Tray', price: 510, unit: '30pcs' ,outOfStock: false},
+{ category: 'Others', item: 'Multi Grain MultiMillet Bread Small', price: 45, unit: '200gms',outOfStock: false },
+{ category: 'Others', item: 'Multi Grain MultiMillet Bread Large', price: 89, unit: '400gms',outOfStock: false },
+{ category: 'Others', item: 'Millet Double Chocolate Muffins', price: 210, unit: '6pcs/pack',outOfStock: false },
+
+{ category: 'Fruits', item: 'Desi Pink Guava', price: 100, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Red Dates', price: 120, unit: '500gms' ,outOfStock: false},
+{ category: 'Fruits', item: 'Plums Fruits', price: 180, unit: '500gms' ,outOfStock: false},
+{ category: 'Fruits', item: 'Citron Lime(Herale Kai)', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Rambutan', price: 220, unit: '500gms' ,outOfStock: false},
+{ category: 'Fruits', item: 'Fresh Dates', price: 120, unit: '500gms' ,outOfStock: false},
+{ category: 'Fruits', item: 'Avocado(Butter Fruit)', price: 310, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Apple(Royal Gala)', price: 380, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Guava (White)', price: 110, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Guava (Red)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Guava (thai)', price: 150, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Banana G9', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Banana Robusta(Pachbale)', price: 95, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Banana (Karpooram)', price: 130, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Banana (Chakkarakeli)', price: "out of stock", unit: 'kg',outOfStock: true },
+{ category: 'Fruits', item: 'Banana (Nendran)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Banana (Red)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Banana (Red) Chandru', price: 170, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Banana (Yelakki)', price: 150, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Papaya', price: 90, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'MuskMelon', price: 80, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Pomegranate', price: 340, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Sweet Lime/Mosambi', price: 150, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Local Watermelon', price: 65, unit: 'kg (pc.wt. 3-5kg)',outOfStock: false },
+{ category: 'Fruits', item: 'Watermelon(Kiran)', price: 60, unit: 'kg (pc.wt. 2-3kg)' ,outOfStock: false},
+{ category: 'Fruits', item: 'Fresh Anjeer/Figs', price: "out of stock", unit: 'pck' ,outOfStock: true},
+{ category: 'Fruits', item: 'Dragon Fruit (White)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Dragon Fruit (Pink)', price: 260, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Sapota', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Pineapple', price: 110, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Mulberries', price: "out of stock", unit: '150g' ,outOfStock: true},
+{ category: 'Fruits', item: 'singapore cherry', price: "out of stock", unit: '100g',outOfStock: true },
+{ category: 'Fruits', item: 'Green Grapes-Manik chaman', price: "out of stock", unit: '500g',outOfStock: true },
+{ category: 'Fruits', item: 'Water Apple', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'cashew fruit', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'star fruit', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Mangosteen fruit', price: 185, unit: '500gms' ,outOfStock: false},
+{ category: 'Fruits', item: 'Litchi fruit', price: "out of stock", unit: '500gms' ,outOfStock: true},
+{ category: 'Fruits', item: 'Neelam Mango', price: 160, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Mango (Banginapalli)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Dasheri)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Kesari)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Sindhura)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Badami)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Totapuri)', price: "180", unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Mango (Malika)', price: "out of stock", unit: 'kg',outOfStock: true },
+{ category: 'Fruits', item: 'Mango (Rasapuri)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (peddarasalu)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (shakkar gutli)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (alphonso)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Himayath Pasand)', price: "out of stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Mango (Panduri)', price: "out of stock", unit: '1kg',outOfStock: true },
+{ category: 'Fruits', item: 'Mango (Malgova)', price: "out of stock", unit: 'kg',outOfStock: true },
+{ category: 'Fruits', item: 'Cheruku Rasalu', price: "out of stock", unit: '1kg',outOfStock: true },
+{ category: 'Fruits', item: 'Nuziveedu Chinna Rasalu', price: "out of stock", unit: '1kg',outOfStock: true },
+{ category: 'Fruits', item: 'Nuziveedu Chinna Rasalu', price: "out of stock", unit: '5kg',outOfStock: true }
+
+];
+
+  const quantities = new Array(productList.length).fill(0);
+
+  function unitStep(product) {
+    const unit = String(product.unit).toLowerCase();
+    return (unit === 'kg') ? 0.25 : 1;
+  }
+  // ✅ Helper function (SEPARATE)
+function isGramUnit(product) {
+  const u = String(product.unit).toLowerCase();
+  return u.includes('gm') || u.includes('gms') || u === 'g' || u.includes('gram');
+}
+  function normalizeQty(n) { return Math.round(n * 100) / 100; }
+
+  function formatQtyLabel(qty, product) {
+    const unit = String(product.unit).toLowerCase();
+    if (unit === 'kg') {
+      if (qty === 0.25) return '1/4';
+      if (qty === 0.5)  return '1/2';
+      if (qty === 0.75) return '3/4';
+    }
+    if (Number.isInteger(qty)) return String(qty);
+    return String(qty);
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+      .replaceAll('"','&quot;').replaceAll("'","&#039;");
+  }
+  function cssSafe(str) { return String(str).toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+
+  function groupByCategory() {
+    const map = new Map();
+    productList.forEach((p, idx) => {
+      const cat = p.category || 'Other';
+      if (!map.has(cat)) map.set(cat, []);
+      map.get(cat).push({ ...p, _index: idx });
+    });
+
+    const ordered = [];
+    CATEGORY_ORDER.forEach(c => { if (map.has(c)) ordered.push([c, map.get(c)]); });
+    for (const [c, items] of map.entries()) {
+      if (!CATEGORY_ORDER.includes(c)) ordered.push([c, items]);
+    }
+    return ordered;
+  }
+
+  function renderProducts() {
+    const container = document.getElementById('products-container');
+    container.innerHTML = '';
+
+    const grouped = groupByCategory();
+    grouped.forEach(([category, items]) => {
+      const section = document.createElement('section');
+      section.className = "category-section scroll-mt-28";
+      section.dataset.category = category;
+      section.id = `cat-${cssSafe(category)}`;
+
+      section.innerHTML = `
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-xl font-bold text-gray-900">${escapeHtml(category)}</h3>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-${cssSafe(category)}"></div>
+      `;
+      container.appendChild(section);
+
+      const grid = section.querySelector(`#grid-${cssSafe(category)}`);
+
+      items.forEach(p => {
+        const idx = p._index;
+        const img = imagePathForItem(p.item, p.image);
+
+      const card = document.createElement('div');
+
+      const isOut = p.outOfStock;
+
+      card.className =
+      `product-card bg-white border border-gray-200 rounded-2xl overflow-hidden cardShadow ${
+          isOut ? "opacity-50 pointer-events-none" : ""
+      }`;
+
+card.dataset.item = String(p.item).toLowerCase();
+
+        card.innerHTML = `
+          <div class="aspect-[4/3] bg-gray-50">
+            <img src="${img}" alt="${escapeHtml(p.item)}"
+              class="w-full h-full object-cover"
+              onerror="this.onerror=null; this.src='${PLACEHOLDER_IMG}';"/>
+          </div>
+          <div class="p-3">
+            <div class="flex items-center gap-2">
+  <span class="text-sm font-semibold text-gray-900 leading-snug">
+    ${escapeHtml(p.item)}
+  </span>
+  ${['Tomato','Onion','Banana','Coriander'].includes(p.item)
+    ? '<span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">Popular</span>'
+    : ''}
+</div>
+
+          ${
+            p.outOfStock
+              ? `<div class="text-sm font-bold text-gray-500 mt-1">Out of Stock</div>`
+              : `<div class="text-sm font-bold text-lime-700 mt-1">₹ ${p.price} / ${p.unit}</div>`
+          }
+            <div class="mt-3" id="controls-${idx}"></div>
+          </div>
+        `;
+        grid.appendChild(card);
+        renderControls(idx);
+      });
+    });
+
+    recalcAll();
+  }
+
+  function renderControls(index) {
+    const p = productList[index];
+    const qty = quantities[index];
+    
+    const el = document.getElementById(`controls-${index}`);
+    if (!el) return;
+    if (p.outOfStock) {
+    el.innerHTML = `
+        <button
+            type="button"
+            disabled
+            class="w-full bg-gray-300 text-gray-600 rounded-xl py-2 text-sm font-semibold cursor-not-allowed">
+            Out of Stock
+        </button>
+    `;
+    return;
+}
+
+    if (qty <= 0) {
+      el.innerHTML = `
+        <button type="button"
+          class="tap w-full bg-lime-600 hover:bg-lime-700 text-white rounded-xl py-2 text-sm font-semibold">
+          Add
+        </button>`;
+      el.querySelector('button').onclick = () => {
+        quantities[index] = normalizeQty(unitStep(p));
+        renderControls(index);
+        recalcAll();
+      };
+    } else {
+      const label = formatQtyLabel(qty, p);
+      el.innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <button type="button"
+            class="tap w-10 h-10 rounded-xl border border-lime-300 bg-lime-50 hover:bg-lime-100 text-lime-800 font-extrabold text-lg">–</button>
+
+          <div class="text-center flex-1">
+            <div class="text-base font-extrabold text-gray-900">${label}</div>
+            <div class="text-xs text-gray-500">${p.unit}</div>
+          </div>
+
+          <button type="button"
+            class="tap w-10 h-10 rounded-xl border border-lime-300 bg-lime-50 hover:bg-lime-100 text-lime-800 font-extrabold text-lg">+</button>
+        </div>`;
+
+      const [minusBtn, plusBtn] = el.querySelectorAll('button');
+      minusBtn.onclick = () => {
+        quantities[index] = normalizeQty(Math.max(0, quantities[index] - unitStep(p)));
+        renderControls(index);
+        recalcAll();
+      };
+      plusBtn.onclick = () => {
+        quantities[index] = normalizeQty(quantities[index] + unitStep(p));
+        renderControls(index);
+        recalcAll();
+      };
+    }
+  }
+
+  function getCartItems() {
+    const items = [];
+    for (let i = 0; i < productList.length; i++) {
+      const qty = quantities[i];
+      if (qty > 0) {
+        const p = productList[i];
+        items.push({
+          index: i, item: p.item, unit: p.unit, price: p.price,
+          qty, qtyLabel: formatQtyLabel(qty, p),
+          lineTotal: qty * p.price
+        });
+      }
+    }
+    return items;
+  }
+
+  function recalcAll() {
+    const cart = getCartItems();
+    const total = cart.reduce((s, x) => s + x.lineTotal, 0);
+
+    // Mobile bar
+    const count = cart.length;
+    document.getElementById('cartMiniLine').textContent = `${count} item${count===1?'':'s'} added`;
+    document.getElementById('cartMiniTotal').textContent = `₹ ${total.toFixed(2)}`;
+
+    // Desktop side cart
+    const sideItems = document.getElementById('sideCartItems');
+    document.getElementById('sideCartTotal').textContent = `₹ ${total.toFixed(2)}`;
+
+    sideItems.innerHTML = '';
+    if (cart.length === 0) {
+      sideItems.innerHTML = `<p class="text-gray-500 text-sm">No items added yet.</p>`;
+    } else {
+      cart.forEach(ci => {
+        const row = document.createElement('div');
+        row.className = "flex justify-between items-start gap-2";
+        row.innerHTML = `
+          <div class="min-w-0">
+            <div class="font-medium text-gray-900 truncate">${escapeHtml(ci.item)}</div>
+            <div class="text-xs text-gray-500">${ci.qtyLabel} ${ci.unit} × ₹${ci.price}/${ci.unit}</div>
+          </div>
+          <div class="font-semibold text-gray-900">₹ ${ci.lineTotal.toFixed(2)}</div>
+        `;
+        sideItems.appendChild(row);
+      });
+    }
+
+    // Mobile modal cart
+    renderCartModal(cart, total);
+  }
+
+  function renderCartModal(cart, total) {
+    const cartItemsEl = document.getElementById('cartItems');
+    cartItemsEl.innerHTML = '';
+
+    if (cart.length === 0) {
+      cartItemsEl.innerHTML = `
+        <div class="text-center py-10">
+          <div class="text-4xl">🧺</div>
+          <div class="mt-2 font-semibold text-gray-900">Your cart is empty</div>
+          <div class="text-sm text-gray-500">Add items to place an order.</div>
+        </div>`;
+    } else {
+      cart.forEach(ci => {
+        const row = document.createElement('div');
+        row.className = "flex items-center justify-between gap-3 p-3 rounded-2xl border border-gray-200";
+        row.innerHTML = `
+          <div class="min-w-0">
+            <div class="font-semibold text-gray-900 truncate">${escapeHtml(ci.item)}</div>
+            <div class="text-xs text-gray-500">${ci.qtyLabel} ${ci.unit} × ₹${ci.price}/${ci.unit}</div>
+          </div>
+          <div class="font-extrabold text-gray-900">₹ ${ci.lineTotal.toFixed(2)}</div>`;
+        cartItemsEl.appendChild(row);
+      });
+    }
+    document.getElementById('cartTotal').textContent = `₹ ${total.toFixed(2)}`;
+  }
+
+  // Search filtering
+  function applySearchFilter(queryRaw) {
+    const query = String(queryRaw || "").trim().toLowerCase();
+    const cards = document.querySelectorAll('.product-card');
+    const sections = document.querySelectorAll('.category-section');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.dataset.item || "";
+      const match = query === "" || name.includes(query);
+      card.classList.toggle('hidden', !match);
+      if (match) visibleCount++;
+    });
+
+    sections.forEach(section => {
+      const anyVisible = section.querySelectorAll('.product-card:not(.hidden)').length > 0;
+      section.classList.toggle('hidden', !anyVisible);
+    });
+
+    document.getElementById('noResults').classList.toggle('hidden', !(query && visibleCount === 0));
+  }
+
+  // Clear cart
+  function clearCart() {
+    quantities.fill(0);
+    for (let i = 0; i < productList.length; i++) renderControls(i);
+    recalcAll();
+  }
+
+  // Mobile modal open/close
+  const cartModal = document.getElementById('cartModal');
+  document.getElementById('openCartBtn').onclick = () => cartModal.classList.remove('hidden');
+  document.getElementById('closeCartBtn').onclick = () => cartModal.classList.add('hidden');
+  document.getElementById('cartBackdrop').onclick = () => cartModal.classList.add('hidden');
+
+  // Clear buttons
+  document.getElementById('clearCartBtn').onclick = clearCart;
+  document.getElementById('sideClearBtn').onclick = clearCart;
+
+  // Place order buttons
+document.getElementById('placeOrderBtn').onclick = showReviewModal;
+
+document.getElementById('sidePlaceOrderBtn').onclick = () => {
+    showReviewModal();
+};
+
+  function showReviewModal() {
+
+    const cart = getCartItems();
+
+    if (cart.length === 0) {
+        showMessage(
+            "Cart Empty",
+            "Please add at least one item before reviewing your order.",
+            true
+        );
+        return;
+    }
+
+    // Customer Details
+    document.getElementById("reviewCustomerDetails").innerHTML = `
+        <p><b>Name:</b> ${document.getElementById("customerName").value || "-"}</p>
+        <p><b>Phone:</b> ${document.getElementById("contactNumber").value || "-"}</p>
+        <p><b>Email:</b> ${document.getElementById("email").value || "-"}</p>
+        <p><b>Address:</b> ${document.getElementById("notes").value || "-"}</p>
+    `;
+
+    const reviewItems = document.getElementById("reviewItems");
+    reviewItems.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        total += item.lineTotal;
+
+        reviewItems.innerHTML += `
+            <div class="border rounded-xl p-4 flex justify-between">
+
+                <div>
+                    <div class="font-semibold">${item.item}</div>
+
+                    <div class="text-sm text-gray-500">
+                        ${item.qtyLabel} ${item.unit}
+                    </div>
+
+                    <div class="text-sm text-gray-500">
+                        ₹${item.price}/${item.unit}
+                    </div>
+                </div>
+
+                <div class="font-bold text-lime-700">
+                    ₹${item.lineTotal.toFixed(2)}
+                </div>
+
+            </div>
+        `;
+
+    });
+
+    document.getElementById("reviewTotal").textContent =
+        `₹${total.toFixed(2)}`;
+
+    document
+        .getElementById("reviewModal")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("reviewModal")
+        .classList.add("flex");
+}
+
+document.getElementById("editOrderBtn").onclick = () => {
+
+    document
+        .getElementById("reviewModal")
+        .classList.add("hidden");
+
+    document
+        .getElementById("reviewModal")
+        .classList.remove("flex");
+
+};
+document.getElementById("confirmOrderBtn").onclick = () => {
+
+    document
+        .getElementById("reviewModal")
+        .classList.add("hidden");
+
+    document
+        .getElementById("reviewModal")
+        .classList.remove("flex");
+
+    submitOrder();
+
+};
+  async function submitOrder() {
+    const loading = document.getElementById('loading-overlay');
+    loading.classList.remove('hidden');
+    loading.classList.add('flex');
+
+    try {
+      const customerData = {
+        'Customer Name': document.getElementById('customerName').value.trim(),
+        'Contact Number': document.getElementById('contactNumber').value.trim(),
+        'Email': document.getElementById('email').value.trim(),
+        'Notes': document.getElementById('notes').value.trim(),
+      };
+
+      if (customerData['Contact Number'].length !== 10 || isNaN(customerData['Contact Number'])) {
+        throw new Error("The contact number must be exactly 10 digits.");
+      }
+      if (!customerData['Customer Name'] || !customerData['Contact Number'] || !customerData['Email']) {
+        throw new Error("Please fill all required fields marked with *.");
+      }
+
+      const cart = getCartItems();
+      if (cart.length === 0) throw new Error("Your cart is empty. Please add at least one item.");
+
+      let totalOrderValue = 0;
+      const productQuantities = {};
+      cart.forEach(ci => {
+        totalOrderValue += ci.lineTotal;
+        productQuantities[ci.item] = `${ci.qtyLabel} ${ci.unit} (~${ci.qty} ${ci.unit}) @ ₹${ci.price}/${ci.unit}`;
+      });
+
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `New Order - Paramparaa Naturals: ${customerData['Customer Name']}`,
+        ...customerData,
+        ...productQuantities,
+        'ESTIMATED TOTAL (Final)': `₹ ${totalOrderValue.toFixed(2)}`
+      };
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const result = await res.json();
+      if (!result.success) throw new Error(result.message || "Unknown error from Web3Forms.");
+
+      cartModal.classList.add('hidden');
+      showMessage("Order Placed Successfully!", "Thank you! Your order was placed. We will contact you shortly.", false);
+
+      document.getElementById('orderForm').reset();
+      clearCart();
+
+    } catch (e) {
+      showMessage("Order Submission Failed", e.message || "Something went wrong.", true);
+    } finally {
+      loading.classList.add('hidden');
+      loading.classList.remove('flex');
+    }
+  }
+
+  // Message box
+  const messageBox = document.getElementById('messageBox');
+  document.getElementById('closeMessageBoxButton').onclick = () => {
+    messageBox.classList.add('hidden');
+    messageBox.classList.remove('flex');
+  };
+
+  function showMessage(title, msg, isError) {
+    const t = document.getElementById('boxTitle');
+    const m = document.getElementById('boxMessage');
+    const btn = document.getElementById('closeMessageBoxButton');
+    t.textContent = title;
+    m.textContent = msg;
+
+    t.className = "text-xl font-bold mb-3 " + (isError ? "text-red-600" : "text-lime-700");
+    btn.className = "w-full py-3 px-4 rounded-2xl text-white font-semibold tap " + (isError ? "bg-red-600 hover:bg-red-700" : "bg-lime-600 hover:bg-lime-700");
+
+    messageBox.classList.remove('hidden');
+    messageBox.classList.add('flex');
+  }
+
+  function renderWeeklyNote() {
+    document.getElementById('weeklyNoteSubtitle').textContent = WEEKLY_NOTE.subtitle;
+    document.getElementById('weeklyNoteTitle').textContent = WEEKLY_NOTE.veggieName;
+
+    const ul = document.getElementById('weeklyNoteBullets');
+    ul.innerHTML = '';
+    WEEKLY_NOTE.bullets.forEach(b => {
+      const li = document.createElement('li');
+      li.textContent = b;
+      ul.appendChild(li);
+    });
+
+    //document.getElementById('weeklyStorageTip').textContent = WEEKLY_NOTE.storageTip;
+    document.getElementById('weeklyNutritionTip').textContent = WEEKLY_NOTE.nutritionTip;
+  }
+
+  function renderFaqs() {
+    const root = document.getElementById('faqContainer');
+    root.innerHTML = '';
+
+    FAQS.forEach((f, idx) => {
+      const wrap = document.createElement('div');
+      wrap.className = "border border-gray-200 rounded-2xl overflow-hidden";
+
+      wrap.innerHTML = `
+        <button type="button" class="tap w-full flex items-center justify-between gap-3 p-4 bg-white hover:bg-gray-50">
+          <span class="font-semibold text-gray-900 text-left">${escapeHtml(f.q)}</span>
+          <span class="text-gray-400 font-bold" id="faqIcon-${idx}">+</span>
+        </button>
+        <div class="hidden px-4 pb-4 text-sm text-gray-700" id="faqBody-${idx}">${escapeHtml(f.a)}</div>
+      `;
+
+      const btn = wrap.querySelector('button');
+      btn.onclick = () => {
+        const body = wrap.querySelector(`#faqBody-${idx}`);
+        const icon = wrap.querySelector(`#faqIcon-${idx}`);
+        const open = !body.classList.contains('hidden');
+        body.classList.toggle('hidden', open);
+        icon.textContent = open ? "+" : "–";
+      };
+
+      root.appendChild(wrap);
+    });
+  }
+
+  // Wire up search
+ // Wire up search (safe even if search HTML is removed/hidden)
+const searchInput = document.getElementById('searchInput');
+const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => applySearchFilter(e.target.value));
+}
+
+if (clearSearchBtn && searchInput) {
+  clearSearchBtn.addEventListener('click', () => {
+    searchInput.value = "";
+    applySearchFilter("");
+  });
+}
+
+
+ async function applyRemotePrices() {
+  try {
+    const res = await fetch("/prices.json", { cache: "no-store" });
+    if (!res.ok) return; // if file missing, ignore
+    const overrides = await res.json();
+
+    productList.forEach(p => {
+      if (overrides[p.item] != null) {
+        p.price = Number(overrides[p.item]);
+      }
+    });
+  } catch (e) {
+    // ignore errors, site still works with original prices
+  }
+}
+function buildCategoryTabs() {
+  const grouped = groupByCategory(); // uses your CATEGORY_ORDER
+  const mobileWrap = document.getElementById('mobileCategoryTabs');
+  const mobileInner = document.getElementById('mobileTabsInner');
+  const deskWrap = document.getElementById('desktopCategoryTabs');
+  const deskInner = document.getElementById('desktopTabsInner');
+
+  if (!mobileWrap || !mobileInner || !deskWrap || !deskInner) return;
+
+  // reset
+  mobileInner.innerHTML = '';
+  deskInner.innerHTML = '';
+
+  // show containers
+  mobileWrap.classList.remove('hidden');
+  deskWrap.classList.remove('hidden');
+
+  // helper for smooth scroll
+  function goToCategory(cat) {
+    const id = `cat-${cssSafe(cat)}`;
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  grouped.forEach(([cat]) => {
+    // Mobile chip
+    const mBtn = document.createElement('button');
+    mBtn.type = "button";
+    mBtn.className = "tap px-3 py-2 rounded-full border border-lime-200 bg-lime-50 text-lime-800 text-sm font-semibold";
+    mBtn.textContent = cat;
+    mBtn.onclick = () => goToCategory(cat);
+    mobileInner.appendChild(mBtn);
+
+    // Desktop button
+    const dBtn = document.createElement('button');
+    dBtn.type = "button";
+    dBtn.className = "tap text-left px-3 py-2 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 font-semibold text-gray-900";
+    dBtn.textContent = cat;
+    dBtn.onclick = () => goToCategory(cat);
+    deskInner.appendChild(dBtn);
+  });
+}
+
+// INIT
+(async function init() {
+  await applyRemotePrices();   // <-- loads prices from link
+  renderProducts();
+buildCategoryTabs();
+renderWeeklyNote();
+// renderFaqs();
+recalcAll();
+applySearchFilter("");
+})();
+</script>
+</body>
+</html>
