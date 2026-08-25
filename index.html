@@ -42,15 +42,15 @@
   <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4">
     <div class="text-sm font-semibold text-gray-900">📝 Order Window</div>
     <div class="text-sm text-gray-700 mt-1">
-      19th August (Wednesday) <b>11:00 AM</b> to<br>
-      20th August (Thursday) <b>01:00 PM</b>
+      26th August (Wednesday) <b>11:00 AM</b> to<br>
+      27th August (Thursday) <b>01:00 PM</b>
     </div>
   </div>
 
   <div class="bg-green-50 border border-green-200 rounded-2xl p-4">
     <div class="text-sm font-semibold text-gray-900">🚚 Delivery Schedule</div>
     <div class="text-sm text-gray-700 mt-1">
-      22nd August (Saturday), <b>07:00 AM – 02:00 PM</b>
+      29th August (Saturday), <b>07:00 AM – 02:00 PM</b>
     </div>
   </div>
 </div>
@@ -556,7 +556,7 @@ const CATEGORY_ORDER = [
 { category: 'Creeper Veggies', item: 'Nethi Beerakaya', price: 130, unit: 'kg' ,outOfStock: false},
 { category: 'Creeper Veggies', item: 'Cucumber Yellow Round', price: 95, unit: 'kg' ,outOfStock: false},
 { category: 'Creeper Veggies', item: 'Cucumber Mangalore', price: 85, unit: 'kg' ,outOfStock: false},
-{ category: 'Creeper Veggies', item: 'Averikai (Short Beans)', price: 140, unit: 'kg' ,outOfStock: false},
+{ category: 'Creeper Veggies', item: 'Averikai (Short Beans)', price: 140, unit: 'kg' ,outOfStock: true},
 { category: 'Creeper Veggies', item: 'Long Beans', price: 140, unit: 'kg' ,outOfStock: false},
 { category: 'Creeper Veggies', item: 'Ash Gourd', price: 70, unit: 'kg' ,outOfStock: false},
 { category: 'Creeper Veggies', item: 'Pumpkin', price: 75, unit: 'kg' ,outOfStock: false},
@@ -612,6 +612,7 @@ const CATEGORY_ORDER = [
 { category: 'Other Farm Produce', item: 'Banana Stem', price: 25, unit: 'pc' ,outOfStock: false},
 { category: 'Other Farm Produce', item: 'Banana Leaves', price: 35, unit: '5pcs' ,outOfStock: false},
 
+{ category: 'Leafy Vegetables', item: 'Ganike Soppu/కాశీ ఆకు', price: 35, unit: 'Bunch' ,outOfStock: false},
 { category: 'Leafy Vegetables', item: 'Coriander', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
 { category: 'Leafy Vegetables', item: 'Karvepaku', price: 10, unit: 'Bunch (50gms)' ,outOfStock: false},
 { category: 'Leafy Vegetables', item: 'Spinach (Palakura)', price: 35, unit: 'Bunch (250gms)' ,outOfStock: false},
@@ -630,6 +631,7 @@ const CATEGORY_ORDER = [
 { category: 'Leafy Vegetables', item: 'Chinta Chigguru Akku', price: "Out of Stock", unit: 'Bunch (250gms)' ,outOfStock: true},
 { category: 'Leafy Vegetables', item: 'Chama Akku', price: "Out of Stock", unit: 'Bunch (250gms)' ,outOfStock: true},
 
+{ category: 'Exotics', item: 'Celery', price: 50, unit: 'Bunch' ,outOfStock: false},
 { category: 'Exotics', item: 'Parsley', price: 50, unit: 'Bunch' ,outOfStock: false},
 { category: 'Exotics', item: 'Spine Gourd', price: 320, unit: 'kg' ,outOfStock: false},
 { category: 'Exotics', item: 'Zucchini yellow', price: 160, unit: 'kg' ,outOfStock: false},
@@ -667,11 +669,12 @@ const CATEGORY_ORDER = [
 { category: 'Others', item: 'Multi Grain MultiMillet Bread Large', price: 89, unit: '400gms',outOfStock: false },
 { category: 'Others', item: 'Millet Double Chocolate Muffins', price: 210, unit: '6pcs/pack',outOfStock: false },
 
+{ category: 'Fruits', item: 'Custard Apple', price: 230, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Banana G9', price: 95, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Banana Robusta(Pachbale)', price: 100, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Karpooram)', price: 130, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Chakkarakeli)', price: "out of stock", unit: 'kg',outOfStock: true },
-{ category: 'Fruits', item: 'Banana (Nendran)', price: 140, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Banana (Nendran)', price: 140, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Banana (Red)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Banana (Red) Chandru', price: 170, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Banana (Yelakki)', price: 150, unit: 'kg' ,outOfStock: false},
@@ -684,8 +687,8 @@ const CATEGORY_ORDER = [
 { category: 'Fruits', item: 'Red Dates', price: 120, unit: '500gms' ,outOfStock: true},
 { category: 'Fruits', item: 'Plums Fruits', price: 180, unit: '500gms' ,outOfStock: false},
 { category: 'Fruits', item: 'Citron Lime(Herale Kai)', price: 120, unit: 'kg' ,outOfStock: true},
-{ category: 'Fruits', item: 'Rambutan', price: 220, unit: '500gms' ,outOfStock: false},
-{ category: 'Fruits', item: 'Longan', price: 240, unit: '500gms' ,outOfStock: false},
+{ category: 'Fruits', item: 'Rambutan', price: 220, unit: '500gms' ,outOfStock: true},
+{ category: 'Fruits', item: 'Longan', price: 240, unit: '500gms' ,outOfStock: true},
 { category: 'Fruits', item: 'Fresh Dates', price: 120, unit: '500gms' ,outOfStock: false},
 { category: 'Fruits', item: 'Avocado(Butter Fruit)', price: 250, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'MuskMelon', price: 80, unit: 'kg' ,outOfStock: false},
@@ -705,13 +708,13 @@ const CATEGORY_ORDER = [
 { category: 'Fruits', item: 'star fruit', price: 120, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Mangosteen fruit', price: 185, unit: '500gms' ,outOfStock: true},
 { category: 'Fruits', item: 'Litchi fruit', price: "out of stock", unit: '500gms' ,outOfStock: true},
-{ category: 'Fruits', item: 'Neelam Mango', price: 160, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Neelam Mango', price: 160, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (Banginapalli)', price: 180, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (Dasheri)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (Kesari)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (Sindhura)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (Badami)', price: "out of stock", unit: 'kg' ,outOfStock: true},
-{ category: 'Fruits', item: 'Mango (Totapuri)', price: "90", unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Mango (Totapuri)', price: "90", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (Malika)', price: "out of stock", unit: 'kg',outOfStock: true },
 { category: 'Fruits', item: 'Mango (Rasapuri)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Mango (peddarasalu)', price: "out of stock", unit: 'kg' ,outOfStock: true},
