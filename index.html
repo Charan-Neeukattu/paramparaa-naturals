@@ -42,15 +42,15 @@
   <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4">
     <div class="text-sm font-semibold text-gray-900">📝 Order Window</div>
     <div class="text-sm text-gray-700 mt-1">
-      9th September (Wednesday) <b>11:00 AM</b> to<br>
-      10th September (Thursday) <b>01:00 PM</b>
+      23rd September (Wednesday) <b>11:00 AM</b> to<br>
+      24th September (Thursday) <b>01:00 PM</b>
     </div>
   </div>
 
   <div class="bg-green-50 border border-green-200 rounded-2xl p-4">
     <div class="text-sm font-semibold text-gray-900">🚚 Delivery Schedule</div>
     <div class="text-sm text-gray-700 mt-1">
-      12th September (Saturday), <b>07:00 AM – 02:00 PM</b>
+      26th September (Saturday), <b>07:00 AM – 02:00 PM</b>
     </div>
   </div>
 </div>
@@ -529,7 +529,7 @@ const CATEGORY_ORDER = [
 { category: 'Veggies', item: 'Tomato Raw', price: 65, unit: 'kg' ,outOfStock: false},
 { category: 'Veggies', item: 'Kashi Tomato', price: "Out of Stock", unit: '500gms' , outOfStock: true},
 { category: 'Veggies', item: 'Brinjal Green Round', price: 100, unit: 'kg' , outOfStock: false},
-{ category: 'Veggies', item: 'Brinjal Green Long', price: 90, unit: 'kg' , outOfStock: true},
+{ category: 'Veggies', item: 'Brinjal Green Long', price: 90, unit: 'kg' , outOfStock: false},
 { category: 'Veggies', item: 'Brinjal Black Round', price: 90, unit: 'kg', outOfStock: false },
 { category: 'Veggies', item: 'Brinjal Purple Long', price: 95, unit: 'kg' ,outOfStock: false},
 { category: 'Veggies', item: 'Brinjal Bottle Purple', price: 110, unit: 'kg' ,outOfStock: false},
@@ -573,7 +573,7 @@ const CATEGORY_ORDER = [
 
 { category: 'Roots & Tubers', item: 'Potato', price: 75, unit: 'kg' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'Baby Potato', price: 90, unit: 'kg' ,outOfStock: false},
-{ category: 'Roots & Tubers', item: 'Red Onion', price: 80, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Red Onion', price: 100, unit: 'kg' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'White Onion', price: "Out of Stock" , unit: 'kg' ,outOfStock: true},
 { category: 'Roots & Tubers', item: 'Onion Sambar', price: 140, unit: 'kg' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'Spring Onion', price: 40, unit: 'Bunch (250gms)' ,outOfStock: false},
@@ -598,7 +598,7 @@ const CATEGORY_ORDER = [
 { category: 'Other Farm Produce', item: 'Pink Oyster Mushrooms', price: 120, unit: '200gms' , outOfStock: false},
 { category: 'Other Farm Produce', item: 'White Oyster Mushroom', price: 120, unit: '200gms' , outOfStock: false},
 { category: 'Other Farm Produce', item: 'Banana Flower', price: 45, unit: '1pc' , outOfStock: false},
-{ category: 'Other Farm Produce', item: 'Kharonda', price: 180, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Kharonda', price: 180, unit: 'kg' ,outOfStock: true},
 { category: 'Other Farm Produce', item: 'Mixed Sprouts', price: 75, unit: '200gms' ,outOfStock: false},
 { category: 'Other Farm Produce', item: 'Raw Banana', price: 26, unit: 'pc' ,outOfStock: false},
 { category: 'Other Farm Produce', item: 'Drum Sticks', price: 10, unit: '1pc' ,outOfStock: false},
@@ -654,6 +654,7 @@ const CATEGORY_ORDER = [
 { category: 'Herbals', item: 'Raw Turmeric', price: 250, unit: 'kg' , outOfStock: false},
 { category: 'Herbals', item: 'Nalleru Kadalu', price: 200, unit: 'kg' ,outOfStock: false},
 
+{ category: 'Others', item: 'Milky Mushrooms', price: 150, unit: '200gms' , outOfStock: false},
 { category: 'Others', item: 'Cold Pressed Sunflower Oil', price: 480, unit: 'Litre' , outOfStock: false},
 { category: 'Others', item: 'Cold Pressed White Sesame Oil', price: 300, unit: '500ml' ,outOfStock: false},
 { category: 'Others', item: 'Cold Pressed White Sesame Oil', price: 600, unit: 'Litre' ,outOfStock: false},
@@ -669,25 +670,26 @@ const CATEGORY_ORDER = [
 { category: 'Others', item: 'Multi Grain MultiMillet Bread Large', price: 89, unit: '400gms',outOfStock: false },
 { category: 'Others', item: 'Millet Double Chocolate Muffins', price: 210, unit: '6pcs/pack',outOfStock: false },
 
+{ category: 'Fruits', item: 'Nagpur Orange', price: 220, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Red Globe Grapes ', price: 180, unit: '500gms' , outOfStock: false},
 { category: 'Fruits', item: 'Custard Apple', price: 230, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Banana G9', price: 95, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Banana Robusta(Pachbale)', price: 100, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Karpooram)', price: 130, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Chakkarakeli)', price: "out of stock", unit: 'kg',outOfStock: true },
-{ category: 'Fruits', item: 'Banana (Nendran)', price: 140, unit: 'kg' ,outOfStock: true},
+{ category: 'Fruits', item: 'Banana (Nendran)', price: 140, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Red)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Banana (Red) Chandru', price: 160, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Yelakki)', price: 160, unit: 'kg' ,outOfStock: false},
-{ category: 'Fruits', item: 'Desi Pink Guava', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Desi Pink Guava', price: 120, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Guava (White)', price: 100, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Guava (thai)', price: 160, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Papaya', price: 90, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Pomegranate', price: 290, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Apple(Royal Gala)', price: 350, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Red Dates', price: 120, unit: '500gms' ,outOfStock: true},
-{ category: 'Fruits', item: 'Plums Fruits', price: 260, unit: '500gms' ,outOfStock: false},
-{ category: 'Fruits', item: 'Citron Lime(Herale Kai)', price: 120, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Plums Fruits', price: 260, unit: '500gms' ,outOfStock: true},
+{ category: 'Fruits', item: 'Citron Lime(Herale Kai)', price: 120, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Rambutan', price: 220, unit: '500gms' ,outOfStock: true},
 { category: 'Fruits', item: 'Longan', price: 240, unit: '500gms' ,outOfStock: true},
 { category: 'Fruits', item: 'Fresh Dates', price: 120, unit: '500gms' ,outOfStock: true},
@@ -701,7 +703,7 @@ const CATEGORY_ORDER = [
 { category: 'Fruits', item: 'Dragon Fruit (Pink)', price: 200, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Sapota', price: 150, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Pineapple', price: 120, unit: 'kg' ,outOfStock: false},
-{ category: 'Fruits', item: 'Mulberries', price: 80, unit: '150g' ,outOfStock: false},
+{ category: 'Fruits', item: 'Mulberries', price: 80, unit: '150g' ,outOfStock: true},
 { category: 'Fruits', item: 'singapore cherry', price: "out of stock", unit: '100g',outOfStock: true },
 { category: 'Fruits', item: 'Green Grapes-Manik chaman', price: "out of stock", unit: '500g',outOfStock: true },
 { category: 'Fruits', item: 'Water Apple', price: "out of stock", unit: 'kg' ,outOfStock: true},
