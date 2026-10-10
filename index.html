@@ -42,15 +42,15 @@
   <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4">
     <div class="text-sm font-semibold text-gray-900">📝 Order Window</div>
     <div class="text-sm text-gray-700 mt-1">
-      4th October (Sunday) <b>11:00 AM</b> to<br>
-      5th October (Monday) <b>01:00 PM</b>
+      11th October (Sunday) <b>11:00 AM</b> to<br>
+      12th October (Monday) <b>01:00 PM</b>
     </div>
   </div>
 
   <div class="bg-green-50 border border-green-200 rounded-2xl p-4">
     <div class="text-sm font-semibold text-gray-900">🚚 Delivery Schedule</div>
     <div class="text-sm text-gray-700 mt-1">
-      7th October (Wednesday), <b>07:00 AM – 02:00 PM</b>
+      14th October (Wednesday), <b>07:00 AM – 02:00 PM</b>
     </div>
   </div>
 </div>
@@ -517,7 +517,8 @@ const CATEGORY_ORDER = [
   'Roots & Tubers',
   'Salad Veggies',
   'Other Farm Produce',
-  'Fruits'
+  'Fruits',
+  'Healthly Snack items'
 ];
 
   // Full product list from your original code
@@ -537,7 +538,7 @@ const CATEGORY_ORDER = [
 { category: 'Veggies', item: 'Ladies Finger (Okra)', price: 120, unit: 'kg' ,outOfStock: false},
 { category: 'Veggies', item: 'Cluster Beans', price: 120, unit: 'kg' ,outOfStock: false},
 { category: 'Veggies', item: 'Cabbage', price: 80, unit: 'kg' ,outOfStock: false},
-{ category: 'Veggies', item: 'Red Cabbage', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
+{ category: 'Veggies', item: 'Red Cabbage', price: 120, unit: 'kg' ,outOfStock: true},
 { category: 'Veggies', item: 'Cauliflower', price: 80, unit: 'pc' ,outOfStock: false},
 { category: 'Veggies', item: 'Capsicum Green', price: 140, unit: 'kg' ,outOfStock: false},
 { category: 'Veggies', item: 'Capsicum Red (Exotic)', price: 350, unit: 'kg' ,outOfStock: false},
@@ -578,7 +579,7 @@ const CATEGORY_ORDER = [
 { category: 'Roots & Tubers', item: 'Onion Sambar', price: 180, unit: 'kg' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'Spring Onion', price: 40, unit: 'Bunch (250gms)' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'Radish', price: 100, unit: 'kg' ,outOfStock: false},
-{ category: 'Roots & Tubers', item: 'Red Radish', price: 100, unit: 'kg' ,outOfStock: false},
+{ category: 'Roots & Tubers', item: 'Red Radish', price: 100, unit: 'kg' ,outOfStock: true},
 { category: 'Roots & Tubers', item: 'Chamagadda', price: 100, unit: 'kg' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'Red Sweet Potato', price: 130, unit: 'kg' ,outOfStock: false},
 { category: 'Roots & Tubers', item: 'White Sweet Potato', price: "Out of Stock", unit: 'kg' ,outOfStock: true},
@@ -609,9 +610,13 @@ const CATEGORY_ORDER = [
 { category: 'Other Farm Produce', item: 'Amla (Indian Gooseberry)', price: 180, unit: 'kg' ,outOfStock: false},
 { category: 'Other Farm Produce', item: 'Raw Mango', price: 120, unit: 'kg' ,outOfStock: false},
 { category: 'Other Farm Produce', item: 'Pachi Palli', price: 160, unit: 'kg' ,outOfStock: false},
-{ category: 'Other Farm Produce', item: 'Pachi Batani', price: 240, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Pachi Batani', price: 240, unit: 'kg' ,outOfStock: true},
 { category: 'Other Farm Produce', item: 'Banana Stem', price: 25, unit: 'pc' ,outOfStock: false},
 { category: 'Other Farm Produce', item: 'Banana Leaves', price: 35, unit: '5pcs' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Tamarind', price: 150, unit: '500gms' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Raw Tamarind', price: 40, unit: '250gms' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Desi Purple Sweet Potato', price: 280, unit: 'kg' ,outOfStock: false},
+{ category: 'Other Farm Produce', item: 'Dry Coconut/Copra', price: 580, unit: 'kg' ,outOfStock: false},
 
 { category: 'Leafy Vegetables', item: 'Coriander', price: 40, unit: 'Bunch (250gms)' ,outOfStock: false},
 { category: 'Leafy Vegetables', item: 'Karvepaku', price: 10, unit: 'Bunch (50gms)' ,outOfStock: false},
@@ -641,11 +646,14 @@ const CATEGORY_ORDER = [
 { category: 'Exotics', item: 'Lettuce Green', price: 55, unit: 'Bunch' ,outOfStock: false},
 { category: 'Exotics', item: 'Ice Berg Lettuce', price: 70, unit: 'pc' ,outOfStock: false},
 { category: 'Exotics', item: 'Oyster Mushrooms', price: "Out of Stock", unit: '200g' ,outOfStock: true},
-{ category: 'Exotics', item: 'Broccoli', price: 190, unit: 'kg' ,outOfStock: true},
+{ category: 'Exotics', item: 'Broccoli', price: 190, unit: 'kg' ,outOfStock: false},
 { category: 'Exotics', item: 'Cherry Tomato', price: 90, unit: '500gms' ,outOfStock: true},
 { category: 'Exotics', item: 'Chow Chow', price: 130, unit: 'kg' ,outOfStock: false},
 { category: 'Exotics', item: 'Pokchai Vegetable', price: 55, unit: 'pc' ,outOfStock: false},
 { category: 'Exotics', item: 'Knol Knol', price: 140, unit: 'kg' ,outOfStock: false},
+{ category: 'Exotics', item: 'Blue Pea Flower(శంకు పుష్పి)', price: 20, unit: '50gms' ,outOfStock: false},
+{ category: 'Exotics', item: 'Asparagus', price: 600, unit: 'kg' ,outOfStock: false},
+{ category: 'Exotics', item: 'Green Basil', price: 400, unit: 'kg' ,outOfStock: false},
 
 { category: 'Herbals', item: 'Betel Leaf (తమల పాకులు)', price: 20, unit: '10pcs' ,outOfStock: false},
 { category: 'Herbals', item: 'Doddapatre soppu (Vamu Leaves)', price: 30, unit: 'Bunch' ,outOfStock: false},
@@ -654,6 +662,7 @@ const CATEGORY_ORDER = [
 { category: 'Herbals', item: 'Brahmi Leaves (Brahmi Aakulu)', price: 35, unit: 'Bunch' ,outOfStock: false},
 { category: 'Herbals', item: 'Raw Turmeric', price: 250, unit: 'kg' , outOfStock: false},
 { category: 'Herbals', item: 'Nalleru Kadalu', price: 200, unit: 'kg' ,outOfStock: false},
+{ category: 'Herbals', item: 'Fresh Rosemary Leaves', price: 500, unit: 'kg' ,outOfStock: false},
 
 { category: 'Others', item: 'Cold Pressed Sunflower Oil', price: 480, unit: 'Litre' , outOfStock: false},
 { category: 'Others', item: 'Cold Pressed White Sesame Oil', price: 300, unit: '500ml' ,outOfStock: false},
@@ -671,12 +680,12 @@ const CATEGORY_ORDER = [
 { category: 'Others', item: 'Millet Double Chocolate Muffins', price: 210, unit: '6pcs/pack',outOfStock: false },
 
 { category: 'Fruits', item: 'Nagpur Orange', price: 220, unit: 'kg' , outOfStock: false},
-{ category: 'Fruits', item: 'Red Globe Grapes ', price: 180, unit: '500gms' , outOfStock: false},
+{ category: 'Fruits', item: 'Red Globe Grapes ', price: 180, unit: '500gms' , outOfStock: true},
 { category: 'Fruits', item: 'Custard Apple', price: 230, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Banana G9', price: 95, unit: 'kg' , outOfStock: false},
 { category: 'Fruits', item: 'Banana Robusta(Pachbale)', price: 100, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Karpooram)', price: 130, unit: 'kg' ,outOfStock: false},
-{ category: 'Fruits', item: 'Banana (Chakkarakeli)', price: "out of stock", unit: 'kg',outOfStock: true },
+{ category: 'Fruits', item: 'Banana (Chakkarakeli)', price: 180, unit: 'kg',outOfStock: false },
 { category: 'Fruits', item: 'Banana (Nendran)', price: 140, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Banana (Red)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Banana (Red) Chandru', price: 180, unit: 'kg' ,outOfStock: false},
@@ -701,7 +710,8 @@ const CATEGORY_ORDER = [
 { category: 'Fruits', item: 'Fresh Anjeer/Figs', price: 120, unit: '300gms' ,outOfStock: true},
 { category: 'Fruits', item: 'Dragon Fruit (White)', price: "out of stock", unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Dragon Fruit (Pink)', price: 210, unit: 'kg' ,outOfStock: false},
-{ category: 'Fruits', item: 'Sapota', price: 150, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Sapota (Cricket Ball)', price: 240, unit: 'kg' ,outOfStock: false},
+{ category: 'Fruits', item: 'Sapota', price: 150, unit: 'kg' ,outOfStock: true},
 { category: 'Fruits', item: 'Pineapple', price: 120, unit: 'kg' ,outOfStock: false},
 { category: 'Fruits', item: 'Mulberries', price: 80, unit: '150g' ,outOfStock: true},
 { category: 'Fruits', item: 'singapore cherry', price: "out of stock", unit: '100g',outOfStock: true },
@@ -728,8 +738,17 @@ const CATEGORY_ORDER = [
 { category: 'Fruits', item: 'Mango (Malgova)', price: "out of stock", unit: 'kg',outOfStock: true },
 { category: 'Fruits', item: 'Cheruku Rasalu', price: "out of stock", unit: '1kg',outOfStock: true },
 { category: 'Fruits', item: 'Nuziveedu Chinna Rasalu', price: "out of stock", unit: '1kg',outOfStock: true },
-{ category: 'Fruits', item: 'Nuziveedu Chinna Rasalu', price: "out of stock", unit: '5kg',outOfStock: true }
+{ category: 'Fruits', item: 'Nuziveedu Chinna Rasalu', price: "out of stock", unit: '5kg',outOfStock: true },
 
+{ category: 'Healthy Snack items', item: 'Dates bites', price: 300, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Anjeer bites', price: 330, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Anjeer', price: 420, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Black Raisins', price: 200, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Super Seeds', price: 220, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Tunisian dates', price: 360, unit: '500gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Palli chikki', price: 165, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Nuvvula chikki', price: 190, unit: '250gms',outOfStock: false },
+{ category: 'Healthy Snack items', item: 'Dryfruits chikki', price: 250, unit: '250gms',outOfStock: false },
 ];
 
   const quantities = new Array(productList.length).fill(0);
